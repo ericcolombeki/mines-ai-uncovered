@@ -50,7 +50,6 @@ const Index = () => {
               <AlertTriangle className="text-yellow-400" />
               AS PLATAFORMAS NÃO QUEREM QUE VOCÊ SAIBA DISSO!
             </p>
-            <p className="text-sm mt-2">Inclui... até vão tentar derrubar esse site!</p>
           </div>
         </div>
 
@@ -72,7 +71,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-8">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="text-green-400 w-5 h-5" />
                   🔒 Método 100% legal
@@ -86,6 +85,14 @@ const Index = () => {
                   ⚠️ Pode sair do ar a qualquer momento!
                 </div>
               </div>
+
+              {/* Second CTA Button */}
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
+              >
+                🚀 ACESSAR MÉTODO AGORA
+              </Button>
             </CardContent>
           </Card>
         </div>
@@ -249,7 +256,7 @@ const Index = () => {
           
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl"
+            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
           >
             🚀 ACESSAR MÉTODO AGORA
           </Button>
