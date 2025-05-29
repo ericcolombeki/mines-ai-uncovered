@@ -14,8 +14,61 @@ const Index = () => {
     const timer = setInterval(() => {
       setCountdown(prev => prev > 0 ? prev - 1 : 23);
     }, 60000);
-    return () => clearInterval(timer);
+
+    // Add Wistia scripts to head
+    const script1 = document.createElement('script');
+    script1.src = 'https://fast.wistia.com/player.js';
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.src = 'https://fast.wistia.com/embed/56y99ssk3w.js';
+    script2.async = true;
+    script2.type = 'module';
+    document.head.appendChild(script2);
+
+    // Add Wistia styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .player-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      wistia-player[media-id='56y99ssk3w']:not(:defined) {
+        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/56y99ssk3w/swatch');
+        display: block;
+        filter: blur(5px);
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      clearInterval(timer);
+      // Cleanup scripts and styles
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+      document.head.removeChild(style);
+    };
   }, []);
+
+  const handleWhatsAppClick = () => {
+    const grupos = [
+      "https://chat.whatsapp.com/BPxw1S8Yp3u98R8C4HxkMf",
+      "https://chat.whatsapp.com/IX7C8LOvXwUCOanAbnyIil",
+      "https://chat.whatsapp.com/GT3gBkZnYoaFdFjtWpsinZ",
+      "https://chat.whatsapp.com/ErJakxVIDVgCBgyQw3CyQI",
+      "https://chat.whatsapp.com/L9CFAtNt8gB2t1yQcUfv50",
+      "https://chat.whatsapp.com/KArkkZfUcJz08WScvfuCAG",
+      "https://chat.whatsapp.com/F22ZAPilzpTKYZtMefsALc"
+    ];
+    window.location.href = grupos[Math.floor(Math.random() * grupos.length)];
+  };
+
+  const handleAccessMethod = () => {
+    window.location.href = "https://php.betbr.site/mines/";
+  };
 
   const testimonials = [
     { name: "João V.", location: "Recife/PE", text: "Fiz R$ 500 no primeiro dia com R$ 20 de banca!" },
@@ -60,15 +113,13 @@ const Index = () => {
               <h2 className="text-3xl font-bold mb-4">🎥 VÍDEO EXCLUSIVO</h2>
               <p className="text-lg mb-6">ASSISTA AGORA e descubra como milhares de jogadores estão ganhando todos os dias com a ajuda da IA no Mines!</p>
               
-              <div className="bg-gray-800 aspect-video rounded-lg flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-red-500 transition-colors">
-                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                  <p className="text-gray-300">Clique para assistir</p>
-                </div>
+              <div className="player-container mb-6">
+                <wistia-player 
+                  media-id="56y99ssk3w" 
+                  seo="false" 
+                  aspect="0.565625" 
+                  style={{ width: '640px', height: '280px' }}
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-8">
@@ -90,6 +141,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
+                onClick={handleAccessMethod}
               >
                 🚀 ACESSAR MÉTODO AGORA
               </Button>
@@ -257,9 +309,21 @@ const Index = () => {
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
+            onClick={handleAccessMethod}
           >
             🚀 ACESSAR MÉTODO AGORA
           </Button>
+
+          {/* WhatsApp Button */}
+          <div className="mt-6">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              onClick={handleWhatsAppClick}
+            >
+              📱 ENTRAR NO GRUPO VIP DO WHATSAPP 📱
+            </Button>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-4 text-sm text-green-300">
             <span>🚀 100% seguro</span>
