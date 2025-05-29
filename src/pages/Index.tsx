@@ -92,7 +92,7 @@ const Index = () => {
 
         {/* Problem Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-red-800/40 to-red-700/40 border-red-400">
+          <Card className="bg-gradient-to-r from-red-900/80 to-red-800/80 border-red-400">
             <CardContent className="p-8 text-white">
               <h2 className="text-3xl font-bold mb-6 text-center">🤔 POR QUE VOCÊ PERDE TANTO NO MINES?</h2>
               
@@ -122,7 +122,7 @@ const Index = () => {
 
         {/* Solution Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-green-700/40 to-green-600/40 border-green-400">
+          <Card className="bg-gradient-to-r from-green-800/80 to-green-700/80 border-green-400">
             <CardContent className="p-8 text-white">
               <h2 className="text-3xl font-bold mb-6 text-center">🛑 MAS AGORA CHEGA!</h2>
               
@@ -213,7 +213,7 @@ const Index = () => {
 
         {/* Secret Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-purple-800/40 to-purple-700/40 border-purple-400">
+          <Card className="bg-gradient-to-r from-purple-900/80 to-purple-800/80 border-purple-400">
             <CardContent className="p-8 text-white">
               <h2 className="text-3xl font-bold mb-6 text-center">🔐 O SEGREDO QUE NINGUÉM CONTA</h2>
               
