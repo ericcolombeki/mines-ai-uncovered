@@ -111,7 +111,7 @@ const Index = () => {
           <Card className="bg-black/40 border-red-500 border-2">
             <CardContent className="p-8 text-center text-white">
               <h2 className="text-3xl font-bold mb-4">🎥 VÍDEO EXCLUSIVO</h2>
-              <p className="text-lg mb-6">ASSISTA AGORA e descubra como milhares de jogadores estão ganhando todos os dias com a ajuda da IA no Mines!</p>
+              <p className="text-lg mb-6">ASSISTA AGORA e descubra como milhares de jogadores estão ganhando todos os dias com a ajuda da Inteligência Artifical no Mines!</p>
               
               <div className="player-container mb-6">
                 <wistia-player 
@@ -279,7 +279,7 @@ const Index = () => {
               <div className="space-y-4 text-lg">
                 <p>✨ Esse método foi criado após estudar a lógica por trás do algoritmo do Mines</p>
                 <p>🚫 As plataformas NUNCA vão te ensinar isso</p>
-                <p>🎯 Mas agora, você aprende passo a passo como usar a IA ao seu favor!</p>
+                <p>🎯 Mas agora, você aprende passo a passo como usar a Inteligência Artifical ao seu favor!</p>
               </div>
             </CardContent>
           </Card>
@@ -304,7 +304,7 @@ const Index = () => {
         {/* CTA Section */}
         <div className="mt-16 text-center space-y-6">
           <h2 className="text-4xl font-bold text-white">✅ QUERO COMEÇAR AGORA!</h2>
-          <p className="text-xl text-yellow-300">💥 Clique no botão abaixo e comece a ganhar com IA no Mines ainda hoje!</p>
+          <p className="text-xl text-yellow-300">💥 Clique no botão abaixo e comece a ganhar com Inteligência Artifical no Mines ainda hoje!</p>
           
           <Button 
             size="lg" 
