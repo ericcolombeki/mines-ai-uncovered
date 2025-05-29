@@ -18,8 +18,8 @@ const Index = () => {
   }, []);
 
   const testimonials = [
-    { name: "João V.", location: "Recife/PE", text: "Fiz R$ 80 no primeiro dia com R$ 20 de banca!" },
-    { name: "Ana C.", location: "São Paulo/SP", text: "O app realmente mostra onde NÃO clicar. Incrível!" },
+    { name: "João V.", location: "Recife/PE", text: "Fiz R$ 500 no primeiro dia com R$ 20 de banca!" },
+    { name: "Ana C.", location: "São Paulo/SP", text: "O app realmente mostra onde NÃO ESTÁ AS BOMBINHAS. Incrível!" },
     { name: "Gabriel T.", location: "Belo Horizonte/MG", text: "Recuperei toda minha banca antiga e já tô no lucro!" }
   ];
 
@@ -38,7 +38,7 @@ const Index = () => {
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-black leading-tight">
-            Se você tá <span className="text-yellow-400">CANSADO</span> de perder dinheiro no Mines...
+            Se você tá <span className="text-yellow-400">CANSADO</span> de perder dinheiro...
           </h1>
           
           <p className="text-xl md:text-2xl font-bold text-yellow-300">
@@ -92,7 +92,7 @@ const Index = () => {
 
         {/* Problem Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-red-600/20 to-orange-600/20 border-red-400">
+          <Card className="bg-gradient-to-r from-red-800/40 to-red-700/40 border-red-400">
             <CardContent className="p-8 text-white">
               <h2 className="text-3xl font-bold mb-6 text-center">🤔 POR QUE VOCÊ PERDE TANTO NO MINES?</h2>
               
@@ -122,7 +122,7 @@ const Index = () => {
 
         {/* Solution Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-green-600/20 to-blue-600/20 border-green-400">
+          <Card className="bg-gradient-to-r from-green-700/40 to-green-600/40 border-green-400">
             <CardContent className="p-8 text-white">
               <h2 className="text-3xl font-bold mb-6 text-center">🛑 MAS AGORA CHEGA!</h2>
               
@@ -213,7 +213,7 @@ const Index = () => {
 
         {/* Secret Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-purple-400">
+          <Card className="bg-gradient-to-r from-purple-800/40 to-purple-700/40 border-purple-400">
             <CardContent className="p-8 text-white">
               <h2 className="text-3xl font-bold mb-6 text-center">🔐 O SEGREDO QUE NINGUÉM CONTA</h2>
               
