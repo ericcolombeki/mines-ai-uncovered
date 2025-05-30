@@ -47,9 +47,9 @@ const Index = () => {
     return () => {
       clearInterval(timer);
       // Cleanup scripts and styles
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
-      document.head.removeChild(style);
+      if (document.head.contains(script1)) document.head.removeChild(script1);
+      if (document.head.contains(script2)) document.head.removeChild(script2);
+      if (document.head.contains(style)) document.head.removeChild(style);
     };
   }, []);
 
@@ -84,55 +84,54 @@ const Index = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="container mx-auto px-4 py-8">
-        <div className={`text-center text-white space-y-6 transform transition-all duration-1000 ${isAnimated ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <Badge className="bg-red-500 text-white text-lg px-6 py-2 animate-bounce">
+      <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
+        <div className={`text-center text-white space-y-4 md:space-y-6 transform transition-all duration-1000 ${isAnimated ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <Badge className="bg-red-500 text-white text-base md:text-lg px-4 md:px-6 py-2 animate-bounce">
             🔥 ATENÇÃO! MÉTODO EXCLUSIVO
           </Badge>
           
-          <h1 className="text-4xl md:text-6xl font-black leading-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-black leading-tight px-2">
             Se você tá <span className="text-yellow-400">CANSADO</span> de perder dinheiro...
           </h1>
           
-          <p className="text-xl md:text-2xl font-bold text-yellow-300">
+          <p className="text-lg md:text-xl lg:text-2xl font-bold text-yellow-300 px-2">
             Essa informação pode mudar seu jogo AGORA MESMO! 🎯
           </p>
 
-          <div className="bg-red-600/20 border-2 border-red-400 rounded-lg p-6 backdrop-blur-sm">
-            <p className="text-lg font-bold flex items-center justify-center gap-2">
-              <AlertTriangle className="text-yellow-400" />
+          <div className="bg-red-600/20 border-2 border-red-400 rounded-lg p-4 md:p-6 backdrop-blur-sm mx-2">
+            <p className="text-base md:text-lg font-bold flex items-center justify-center gap-2 flex-wrap">
+              <AlertTriangle className="text-yellow-400 flex-shrink-0" />
               AS PLATAFORMAS NÃO QUEREM QUE VOCÊ SAIBA DISSO!
             </p>
           </div>
         </div>
 
         {/* Video Section */}
-        <div className="mt-12 max-w-4xl mx-auto">
+        <div className="mt-8 md:mt-12 max-w-4xl mx-auto">
           <Card className="bg-black/40 border-red-500 border-2">
-            <CardContent className="p-8 text-center text-white">
-              <h2 className="text-3xl font-bold mb-4">🎥 VÍDEO EXCLUSIVO</h2>
-              <p className="text-lg mb-6">ASSISTA AGORA e descubra como milhares de jogadores estão ganhando todos os dias com a ajuda da Inteligência Artifical no Mines!</p>
+            <CardContent className="p-4 md:p-8 text-center text-white">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">🎥 VÍDEO EXCLUSIVO</h2>
+              <p className="text-base md:text-lg mb-6">ASSISTA AGORA e descubra como milhares de jogadores estão ganhando todos os dias com a ajuda da Inteligência Artificial no Mines!</p>
               
               <div className="player-container mb-6">
-                <wistia-player 
-                  media-id="56y99ssk3w" 
-                  seo="false" 
-                  aspect="0.565625" 
-                  style={{ width: '640px', height: '280px' }}
+                <div 
+                  dangerouslySetInnerHTML={{
+                    __html: `<wistia-player media-id="56y99ssk3w" seo="false" aspect="0.565625" style="width: 100%; max-width: 640px; height: auto;"></wistia-player>`
+                  }}
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-8">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-400 w-5 h-5" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 text-sm mb-6 md:mb-8">
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" />
                   🔒 Método 100% legal
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-400 w-5 h-5" />
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" />
                   💰 Resultados já no primeiro dia
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="text-green-400 w-5 h-5" />
+                <div className="flex items-center justify-center md:justify-start gap-2">
+                  <CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" />
                   ⚠️ Pode sair do ar a qualquer momento!
                 </div>
               </div>
@@ -140,7 +139,8 @@ const Index = () => {
               {/* Second CTA Button */}
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto"
+                style={{ animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
                 onClick={handleAccessMethod}
               >
                 🚀 ACESSAR MÉTODO AGORA
@@ -150,28 +150,28 @@ const Index = () => {
         </div>
 
         {/* Problem Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
           <Card className="bg-gradient-to-r from-red-900/80 to-red-800/80 border-red-400">
-            <CardContent className="p-8 text-white">
-              <h2 className="text-3xl font-bold mb-6 text-center">🤔 POR QUE VOCÊ PERDE TANTO NO MINES?</h2>
+            <CardContent className="p-6 md:p-8 text-white">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">🤔 POR QUE VOCÊ PERDE TANTO NO MINES?</h2>
               
-              <div className="space-y-4 text-lg">
+              <div className="space-y-4 text-base md:text-lg">
                 <div className="flex items-center gap-3">
-                  <span className="text-red-400">❌</span>
+                  <span className="text-red-400 flex-shrink-0">❌</span>
                   <span>Não é falta de sorte...</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-red-400">❌</span>
+                  <span className="text-red-400 flex-shrink-0">❌</span>
                   <span>Não é porque o jogo é impossível...</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-red-400">❌</span>
+                  <span className="text-red-400 flex-shrink-0">❌</span>
                   <span>É porque o sistema é feito pra te enganar!</span>
                 </div>
               </div>
 
               <div className="mt-6 p-4 bg-red-500/30 rounded-lg">
-                <p className="font-bold text-center text-xl">
+                <p className="font-bold text-center text-lg md:text-xl">
                   A inteligência da plataforma é feita para te fazer perder!
                 </p>
               </div>
@@ -180,40 +180,40 @@ const Index = () => {
         </div>
 
         {/* Solution Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
           <Card className="bg-gradient-to-r from-green-800/80 to-green-700/80 border-green-400">
-            <CardContent className="p-8 text-white">
-              <h2 className="text-3xl font-bold mb-6 text-center">🛑 MAS AGORA CHEGA!</h2>
+            <CardContent className="p-6 md:p-8 text-white">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">🛑 MAS AGORA CHEGA!</h2>
               
-              <p className="text-xl text-center mb-6">
-                Descobri um método <span className="text-yellow-400 font-bold">100% FUNCIONAL</span> e <span className="text-yellow-400 font-bold">100% AUTOMATIZADO</span> com IA
+              <p className="text-lg md:text-xl text-center mb-6">
+                Descobri um método <span className="text-yellow-400 font-bold">100% FUNCIONAL</span> e <span className="text-yellow-400 font-bold">100% AUTOMATIZADO</span> com Inteligência Artificial
               </p>
               
-              <p className="text-lg text-center mb-8 text-green-300">
+              <p className="text-base md:text-lg text-center mb-8 text-green-300">
                 Que te mostra ONDE ESTÃO AS BOMBAS antes mesmo de você clicar!
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-green-400 w-6 h-6" />
+                  <CheckCircle className="text-green-400 w-6 h-6 flex-shrink-0" />
                   <span>✅ Sem hacks</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-green-400 w-6 h-6" />
+                  <CheckCircle className="text-green-400 w-6 h-6 flex-shrink-0" />
                   <span>✅ Sem modificar o jogo</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-green-400 w-6 h-6" />
+                  <CheckCircle className="text-green-400 w-6 h-6 flex-shrink-0" />
                   <span>✅ Sem promessas falsas</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-green-400 w-6 h-6" />
+                  <CheckCircle className="text-green-400 w-6 h-6 flex-shrink-0" />
                   <span>✅ Resultados reais e rastreáveis</span>
                 </div>
               </div>
 
               <div className="mt-6 p-4 bg-green-500/30 rounded-lg">
-                <p className="font-bold text-center text-lg">
+                <p className="font-bold text-center text-base md:text-lg">
                   ⚡ Qualquer pessoa consegue usar, mesmo sem entender de apostas!
                 </p>
               </div>
@@ -222,19 +222,19 @@ const Index = () => {
         </div>
 
         {/* Features Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
           <Card className="bg-black/40 border-blue-500">
-            <CardContent className="p-8 text-white text-center">
-              <h2 className="text-3xl font-bold mb-6">📲 FUNCIONA EM QUALQUER CELULAR</h2>
-              <p className="text-lg mb-6">Veja como o app mostra o caminho seguro no Mines em tempo real com IA!</p>
+            <CardContent className="p-6 md:p-8 text-white text-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">📲 FUNCIONA EM QUALQUER CELULAR</h2>
+              <p className="text-base md:text-lg mb-6">Veja como o app mostra o caminho seguro no Mines em tempo real com Inteligência Artificial!</p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-center gap-3">
-                  <Zap className="text-yellow-400 w-6 h-6" />
+                <div className="flex items-center justify-center md:justify-start gap-3">
+                  <Zap className="text-yellow-400 w-6 h-6 flex-shrink-0" />
                   <span>🔐 Acesso imediato</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <TrendingUp className="text-green-400 w-6 h-6" />
+                <div className="flex items-center justify-center md:justify-start gap-3">
+                  <TrendingUp className="text-green-400 w-6 h-6 flex-shrink-0" />
                   <span>📈 Resultados em até 24h</span>
                 </div>
               </div>
@@ -243,8 +243,8 @@ const Index = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="mt-16 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-white text-center mb-8">🗣️ DEPOIMENTOS REAIS DO NOSSO GRUPO</h2>
+        <div className="mt-12 md:mt-16 max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">🗣️ DEPOIMENTOS REAIS DO NOSSO GRUPO</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -255,7 +255,7 @@ const Index = () => {
                       <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-lg mb-4">"{testimonial.text}"</p>
+                  <p className="text-base md:text-lg mb-4">"{testimonial.text}"</p>
                   <p className="font-bold">— {testimonial.name}, {testimonial.location}</p>
                 </CardContent>
               </Card>
@@ -263,7 +263,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Badge className="bg-green-500 text-white text-lg px-6 py-2">
+            <Badge className="bg-green-500 text-white text-base md:text-lg px-4 md:px-6 py-2">
               <Users className="w-5 h-5 mr-2" />
               🎯 Já são mais de 3.100 pessoas economizando e ganhando!
             </Badge>
@@ -271,44 +271,45 @@ const Index = () => {
         </div>
 
         {/* Secret Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
           <Card className="bg-gradient-to-r from-purple-900/80 to-purple-800/80 border-purple-400">
-            <CardContent className="p-8 text-white">
-              <h2 className="text-3xl font-bold mb-6 text-center">🔐 O SEGREDO QUE NINGUÉM CONTA</h2>
+            <CardContent className="p-6 md:p-8 text-white">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">🔐 O SEGREDO QUE NINGUÉM CONTA</h2>
               
-              <div className="space-y-4 text-lg">
+              <div className="space-y-4 text-base md:text-lg">
                 <p>✨ Esse método foi criado após estudar a lógica por trás do algoritmo do Mines</p>
                 <p>🚫 As plataformas NUNCA vão te ensinar isso</p>
-                <p>🎯 Mas agora, você aprende passo a passo como usar a Inteligência Artifical ao seu favor!</p>
+                <p>🎯 Mas agora, você aprende passo a passo como usar a Inteligência Artificial ao seu favor!</p>
               </div>
             </CardContent>
           </Card>
         </div>
 
         {/* Urgency Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
           <Card className="bg-red-600/30 border-red-400 border-2">
-            <CardContent className="p-8 text-white text-center">
-              <h2 className="text-3xl font-bold mb-4">⚠️ ÚLTIMAS VAGAS!</h2>
-              <p className="text-lg mb-4">Liberamos apenas 20 acessos por dia para evitar que o app seja derrubado.</p>
-              <p className="text-lg mb-6 text-yellow-300">Essa página pode sair do ar a qualquer momento.</p>
+            <CardContent className="p-6 md:p-8 text-white text-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">⚠️ ÚLTIMAS VAGAS!</h2>
+              <p className="text-base md:text-lg mb-4">Liberamos apenas 20 acessos por dia para evitar que o app seja derrubado.</p>
+              <p className="text-base md:text-lg mb-6 text-yellow-300">Essa página pode sair do ar a qualquer momento.</p>
               
               <div className="flex items-center justify-center gap-2 mb-6">
-                <Shield className="text-green-400 w-6 h-6" />
-                <span className="text-lg font-bold">🔐 Garantia total</span>
+                <Shield className="text-green-400 w-6 h-6 flex-shrink-0" />
+                <span className="text-base md:text-lg font-bold">🔐 Garantia total</span>
               </div>
             </CardContent>
           </Card>
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 text-center space-y-6">
-          <h2 className="text-4xl font-bold text-white">✅ QUERO COMEÇAR AGORA!</h2>
-          <p className="text-xl text-yellow-300">💥 Clique no botão abaixo e comece a ganhar com Inteligência Artifical no Mines ainda hoje!</p>
+        <div className="mt-12 md:mt-16 text-center space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white px-2">✅ QUERO COMEÇAR AGORA!</h2>
+          <p className="text-lg md:text-xl text-yellow-300 px-2">💥 Clique no botão abaixo e comece a ganhar com Inteligência Artificial no Mines ainda hoje!</p>
           
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl animate-pulse"
+            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto max-w-md mx-auto"
+            style={{ animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
             onClick={handleAccessMethod}
           >
             🚀 ACESSAR MÉTODO AGORA
@@ -318,14 +319,14 @@ const Index = () => {
           <div className="mt-6">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold text-xl px-12 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl"
+              className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold text-lg md:text-xl px-6 md:px-12 py-4 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto max-w-md mx-auto"
               onClick={handleWhatsAppClick}
             >
               📱 ENTRAR NO GRUPO VIP DO WHATSAPP 📱
             </Button>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-green-300">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-sm text-green-300 px-2">
             <span>🚀 100% seguro</span>
             <span>•</span>
             <span>📊 Resultados comprovados</span>
@@ -335,10 +336,10 @@ const Index = () => {
         </div>
 
         {/* Footer countdown */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 md:mt-16 text-center">
           <div className="bg-red-600/20 border border-red-400 rounded-lg p-4 inline-block">
             <div className="flex items-center gap-2 text-white">
-              <Clock className="w-5 h-5 text-yellow-400" />
+              <Clock className="w-5 h-5 text-yellow-400 flex-shrink-0" />
               <span className="font-bold">Vagas restantes hoje: {countdown}</span>
             </div>
           </div>
