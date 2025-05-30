@@ -140,7 +140,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto"
-                style={{ animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
+                style={{ animation: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
                 onClick={handleAccessMethod}
               >
                 🚀 ACESSAR MÉTODO AGORA
@@ -309,7 +309,7 @@ const Index = () => {
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto max-w-md mx-auto"
-            style={{ animation: 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
+            style={{ animation: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
             onClick={handleAccessMethod}
           >
             🚀 ACESSAR MÉTODO AGORA
@@ -322,7 +322,7 @@ const Index = () => {
               className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold text-lg md:text-xl px-6 md:px-12 py-4 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-2xl w-full md:w-auto max-w-md mx-auto"
               onClick={handleWhatsAppClick}
             >
-              📱 ENTRAR NO GRUPO VIP DO WHATSAPP 📱
+              ENTRAR NO GRUPO VIP DO WHATSAPP
             </Button>
           </div>
 
