@@ -1,13 +1,14 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, AlertTriangle, Zap, Shield, TrendingUp, Users, Clock, Star } from 'lucide-react';
+import { useUTMManager } from '@/hooks/useUTMManager';
 
 const Index = () => {
   const [countdown, setCountdown] = useState(23);
   const [isAnimated, setIsAnimated] = useState(false);
+  const { addUTMsToUrl, utmParams, hasUTMs } = useUTMManager();
 
   useEffect(() => {
     setIsAnimated(true);
@@ -63,11 +64,17 @@ const Index = () => {
       "https://chat.whatsapp.com/KArkkZfUcJz08WScvfuCAG",
       "https://chat.whatsapp.com/F22ZAPilzpTKYZtMefsALc"
     ];
-    window.location.href = grupos[Math.floor(Math.random() * grupos.length)];
+    const selectedGroup = grupos[Math.floor(Math.random() * grupos.length)];
+    const urlWithUTMs = addUTMsToUrl(selectedGroup);
+    console.log('Redirecionando para WhatsApp com UTMs:', urlWithUTMs);
+    window.location.href = urlWithUTMs;
   };
 
   const handleAccessMethod = () => {
-    window.location.href = "https://php.betbr.site/mines/";
+    const baseUrl = "https://php.betbr.site/mines/";
+    const urlWithUTMs = addUTMsToUrl(baseUrl);
+    console.log('Redirecionando para método com UTMs:', urlWithUTMs);
+    window.location.href = urlWithUTMs;
   };
 
   const testimonials = [
@@ -78,6 +85,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-900 via-red-800 to-orange-900">
+      {/* Debug info para UTMs (apenas em desenvolvimento) */}
+      {hasUTMs && process.env.NODE_ENV === 'development' && (
+        <div className="bg-blue-900/50 text-white p-2 text-xs">
+          UTMs ativas: {JSON.stringify(utmParams)}
+        </div>
+      )}
+
       {/* Header with urgency banner */}
       <div className="bg-gradient-to-r from-red-600 to-orange-500 text-white text-center py-2 font-bold animate-pulse">
         🔥 ÚLTIMAS {countdown} VAGAS DISPONÍVEIS HOJE! 🔥
